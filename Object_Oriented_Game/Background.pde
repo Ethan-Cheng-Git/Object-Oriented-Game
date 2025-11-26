@@ -20,6 +20,11 @@ class Background {
     fill(c);
     rect(objectLocation.x, objectLocation.y, w, l); 
    }
+   if (t == 2) {
+    stroke(1);
+    fill(c);
+    triangle(objectLocation.x, objectLocation.y, objectLocation.x + 30, objectLocation.y - 40, objectLocation.x + 60, objectLocation.y); 
+   }
   }
   
   
