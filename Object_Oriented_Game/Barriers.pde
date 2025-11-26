@@ -1,3 +1,3 @@
-class Barriers {
+class Snowman {
   
 }
