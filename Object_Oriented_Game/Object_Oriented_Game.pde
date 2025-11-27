@@ -1,6 +1,8 @@
 ArrayList<Player> player;
 ArrayList<Snowman> snowman;
 ArrayList<Background> background;
+Snow [] snow = new Snow [40]; 
+
 void setup () {
   size(800, 500);
   background(255);
@@ -42,11 +44,25 @@ void setup () {
   background.add(new Background(740, 180, 0, 0, 2, color(0, 255, 0)));
   background.add(new Background(740, 160, 50, 140, 2, color(0, 255, 0)));
   
+  //snow animation 
+  for (int i = 0 ; i < snow.length ; i++) {
+  snow[i] = new Snow(4); 
+  }
+  
 }
 
 void draw() {
+  background (255);
+  //call the user-defined method "display()" to set the trees
   for (int i = 0; i < background.size(); i++) {
     Background b = background.get(i);
     b.display();
   }
+  //call the user-defined method to menable the snowfall
+  for (int i = 0 ; i < snow.length ; i++) {
+  snow[i].display();
+  snow[i].snowFall();
+  snow[i].top();
+  }
+  
 }
