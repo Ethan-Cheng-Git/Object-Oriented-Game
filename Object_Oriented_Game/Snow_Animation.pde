@@ -21,7 +21,7 @@ class Snow {
     ellipse(x,y,diameter,diameter);
   }
   
- void top() {
+ void fall() {
    if (y > height) {
      y = 0; 
    }

@@ -1,7 +1,7 @@
 ArrayList<Player> player;
 ArrayList<Snowman> snowman;
 ArrayList<Background> background;
-Snow [] snow = new Snow [50];
+Snow [] snow = new Snow [60];
 
 void setup () {
   size(800, 500);
@@ -85,10 +85,10 @@ void draw() {
     Background b = background.get(i);
     b.display();
   }
-  //call the user-defined method to menable the snowfall
+  //call the user-defined method to enable the snowfall
   for (int i = 0; i < snow.length; i++) {
     snow[i].display();
     snow[i].snowFall();
-    snow[i].top();
+    snow[i].fall();
   }
 }
