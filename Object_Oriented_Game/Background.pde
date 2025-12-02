@@ -15,53 +15,47 @@ class Background {
   }
   //make rectangle with no stroke
   void display () {
-   if (t == 1) {
-    stroke(1);
-    fill(c);
-    rect(objectLocation.x, objectLocation.y, w, l); 
-   }
-   //make a smaller triangle with stroke
-   if (t == 2) {
-    stroke(1);
-    fill(c);
-    triangle(objectLocation.x, objectLocation.y, objectLocation.x + 30, objectLocation.y - 40, objectLocation.x + 60, objectLocation.y); 
-   }
-   //make a rectangle with no stroke
-   if (t == 3) {
-    noStroke();
-    fill(c);
-    rect(objectLocation.x, objectLocation.y, w, l); 
-   }
-   //make a bigger triangle with stroke
-   if (t == 4) {
-    stroke(1);
-    fill(c);
-    triangle(objectLocation.x + 10, objectLocation.y, objectLocation.x + 30, objectLocation.y - 20, objectLocation.x + 50, objectLocation.y); 
-   }
-   //make a ellipse
-   if (t == 5) {
-    stroke(1);
-    fill(c);
-    ellipse(objectLocation.x, objectLocation.y, w, w); 
-   }
-   //make lines
-   if (t == 6) {
-    float pointX = w; 
-    float pointY = l;
-    stroke(1);
-    line(objectLocation.x, objectLocation.y, pointX, pointY); 
-   }
-  if (t == 7) {
-    stroke(1);
-    fill(c);
-    triangle(objectLocation.x, objectLocation.y, objectLocation.x + 10, objectLocation.y - 5, objectLocation.x + 10, objectLocation.y + 5); 
-   }
+    if (t == 1) {
+      float skyX = objectLocation.x;
+      float skyY = objectLocation.y;
+      stroke(1);
+      fill(c);
+      rect(skyX, skyY, w, l);
+    }
+    //make a smaller triangle with stroke
+    if (t == 2) {
+      stroke(1);
+      fill(c);
+      triangle(objectLocation.x, objectLocation.y, objectLocation.x + 30, objectLocation.y - 40, objectLocation.x + 60, objectLocation.y);
+    }
+    //make a rectangle with no stroke
+    if (t == 3) {
+      noStroke();
+      fill(c);
+      rect(objectLocation.x, objectLocation.y, w, l);
+    }
+    //make a bigger triangle with stroke
+    if (t == 4) {
+      stroke(1);
+      fill(c);
+      triangle(objectLocation.x + 10, objectLocation.y, objectLocation.x + 30, objectLocation.y - 20, objectLocation.x + 50, objectLocation.y);
+    }
+    //make a ellipse
+    if (t == 5) {
+      stroke(1);
+      fill(c);
+      ellipse(objectLocation.x, objectLocation.y, w, w);
+    }
+    //make lines
+    if (t == 6) {
+      stroke(1);
+      fill(c);
+      triangle(objectLocation.x, objectLocation.y, objectLocation.x + 10, objectLocation.y - 5, objectLocation.x + 10, objectLocation.y + 5);
+    }
   }
-  
-  
-  
-  
-  
-  
-  
+
+  void stuffMove() {
+    objectLocation.x = objectLocation.x - 1;
+
+  }
 }

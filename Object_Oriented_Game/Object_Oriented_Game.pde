@@ -78,13 +78,15 @@ void setup () {
   background.add(new Background(100, 300, 40, 0, 5, color(255)));
   background.add(new Background(100, 340, 40, 0, 5, color(255)));
   //eyes
-  background.add(new Background(60, 280, 80, 300, 6, color(255)));
-  background.add(new Background(120, 300, 140, 280, 6, color(255)));
+  background.add(new Background(90, 250, 1, 1, 5, color(255)));
+  background.add(new Background(100, 250, 1, 1, 5, color(255)));
   //arms
-  background.add(new Background(90, 250, 1, 0, 5, color(255)));
-  background.add(new Background(100, 250, 1, 0, 5, color(255)));
+  background.add(new Background(60, 280, 10, 10, 1, color(0)));
+  background.add(new Background(70, 290, 10, 10, 1, color(0)));
+  background.add(new Background(120, 290, 10, 10, 1, color(0)));
+  background.add(new Background(130, 280, 10, 10, 1, color(0)));
   //nose
-  background.add(new Background(90, 260, 100, 55, 7, color(255, 100, 0)));
+  background.add(new Background(90, 260, 100, 55, 6, color(255, 100, 0)));
   //buttons
   background.add(new Background(100, 290, 1, 0, 5, color(255)));
   background.add(new Background(100, 300, 1, 0, 5, color(255)));
@@ -96,13 +98,15 @@ void setup () {
   background.add(new Background(600, 300, 40, 0, 5, color(255)));
   background.add(new Background(600, 340, 40, 0, 5, color(255)));
   //arms
-  background.add(new Background(560, 280, 580, 300, 6, color(255)));
-  background.add(new Background(620, 300, 640, 280, 6, color(255)));
+  background.add(new Background(560, 280, 10, 10, 1, color(0)));
+  background.add(new Background(570, 290, 10, 10, 1, color(0)));
+  background.add(new Background(620, 290, 10, 10, 1, color(0)));
+  background.add(new Background(630, 280, 10, 10, 1, color(0)));
   //eyes
   background.add(new Background(590, 250, 1, 0, 5, color(255)));
   background.add(new Background(600, 250, 1, 0, 5, color(255)));
   //nose
-  background.add(new Background(590, 260, 100, 55, 7, color(255, 100, 0)));
+  background.add(new Background(590, 260, 100, 55, 6, color(255, 100, 0)));
   //buttons
   background.add(new Background(600, 290, 1, 0, 5, color(255)));
   background.add(new Background(600, 300, 1, 0, 5, color(255)));
@@ -124,6 +128,7 @@ void draw() {
   for (int i = 0; i < background.size(); i++) {
     Background b = background.get(i);
     b.display();
+    //b.stuffMove();
   }
   //call the user-defined method to enable the snowfall
   for (int i = 0; i < snow.length; i++) {
