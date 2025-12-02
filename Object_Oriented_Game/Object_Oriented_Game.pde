@@ -27,7 +27,7 @@ void setup () {
   background.add(new Background(700, 180, 10, 15, 1, color(150, 75, 0)));
   background.add(new Background(760, 180, 20, 40, 1, color(150, 75, 0)));
 
-  //tree top
+  //tree tops
   background.add(new Background(20, 200, 50, 140, 2, color(0, 255, 0)));
   background.add(new Background(20, 180, 0, 0, 2, color(0, 255, 0)));
   background.add(new Background(20, 160, 50, 140, 2, color(0, 255, 0)));
@@ -71,7 +71,47 @@ void setup () {
   background.add(new Background(740, 200, 50, 140, 2, color(0, 255, 0)));
   background.add(new Background(740, 180, 0, 0, 2, color(0, 255, 0)));
   background.add(new Background(740, 160, 50, 140, 2, color(0, 255, 0)));
-
+  
+  
+  //snowman
+  background.add(new Background(100, 260, 40, 0, 5, color(255)));
+  background.add(new Background(100, 300, 40, 0, 5, color(255)));
+  background.add(new Background(100, 340, 40, 0, 5, color(255)));
+  //eyes
+  background.add(new Background(60, 280, 80, 300, 6, color(255)));
+  background.add(new Background(120, 300, 140, 280, 6, color(255)));
+  //arms
+  background.add(new Background(90, 250, 1, 0, 5, color(255)));
+  background.add(new Background(100, 250, 1, 0, 5, color(255)));
+  //nose
+  background.add(new Background(90, 260, 100, 55, 7, color(255, 100, 0)));
+  //buttons
+  background.add(new Background(100, 290, 1, 0, 5, color(255)));
+  background.add(new Background(100, 300, 1, 0, 5, color(255)));
+  background.add(new Background(100, 310, 1, 0, 5, color(255)));
+  
+  
+  //snowman 2
+  background.add(new Background(600, 260, 40, 0, 5, color(255)));
+  background.add(new Background(600, 300, 40, 0, 5, color(255)));
+  background.add(new Background(600, 340, 40, 0, 5, color(255)));
+  //arms
+  background.add(new Background(560, 280, 580, 300, 6, color(255)));
+  background.add(new Background(620, 300, 640, 280, 6, color(255)));
+  //eyes
+  background.add(new Background(590, 250, 1, 0, 5, color(255)));
+  background.add(new Background(600, 250, 1, 0, 5, color(255)));
+  //nose
+  background.add(new Background(590, 260, 100, 55, 7, color(255, 100, 0)));
+  //buttons
+  background.add(new Background(600, 290, 1, 0, 5, color(255)));
+  background.add(new Background(600, 300, 1, 0, 5, color(255)));
+  background.add(new Background(600, 310, 1, 0, 5, color(255)));
+  
+  
+  
+  
+  
   //snow animation
   for (int i = 0; i < snow.length; i++) {
     snow[i] = new Snow(4);
