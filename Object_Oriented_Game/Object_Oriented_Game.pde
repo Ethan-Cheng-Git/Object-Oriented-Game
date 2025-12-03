@@ -1,17 +1,19 @@
 ArrayList<Player> player;
 ArrayList<Snowman> snowman;
 ArrayList<Background> background;
+ArrayList<Ground> ground;
 Snow [] snow = new Snow [60];
 
 void setup () {
   size(800, 500);
-  background(255);
+  background(0, 100, 255);
   player = new ArrayList<Player>();
   snowman = new ArrayList<Snowman>();
   background = new ArrayList<Background>();
+  ground = new ArrayList <Ground>();
 
   // sky?
-  background.add(new Background(0, 0, width, 180, 3, color(0, 100, 255)));
+  background.add(new Background(0, 180, width, height, 3, color(255)));
 
   //Add the trees
   //wood
@@ -123,7 +125,8 @@ void setup () {
 }
 
 void draw() {
-  background (255);
+  background (0, 100, 255);
+  skyDisplay();
   //call the user-defined method "display()" to set the trees
   for (int i = 0; i < background.size(); i++) {
     Background b = background.get(i);
