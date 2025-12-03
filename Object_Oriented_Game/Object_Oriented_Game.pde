@@ -11,7 +11,7 @@ void setup () {
   ground = new ArrayList <Ground>();
 
   // sky?
-  ground.add(new Ground(0, 180, width, height, color(255)));
+  ground.add(new Ground(0, 180, width, height, color(245)));
 
   //Add the trees
   //wood
@@ -63,7 +63,7 @@ void setup () {
   background.add(new Background(600, 200, 50, 140, 2, color(0, 255, 0)));
   background.add(new Background(600, 180, 0, 0, 2, color(0, 255, 0)));
   background.add(new Background(600, 160, 50, 140, 2, color(0, 255, 0)));
-  
+
   background.add(new Background(675, 180, 0, 0, 4, color(0, 255, 0)));
   background.add(new Background(675, 170, 0, 0, 4, color(0, 255, 0)));
   background.add(new Background(675, 160, 0, 0, 4, color(0, 255, 0)));
@@ -71,8 +71,8 @@ void setup () {
   background.add(new Background(740, 200, 50, 140, 2, color(0, 255, 0)));
   background.add(new Background(740, 180, 0, 0, 2, color(0, 255, 0)));
   background.add(new Background(740, 160, 50, 140, 2, color(0, 255, 0)));
-  
-  
+
+
   //snowman
   background.add(new Background(100, 260, 40, 0, 5, color(255)));
   background.add(new Background(100, 300, 40, 0, 5, color(255)));
@@ -91,8 +91,8 @@ void setup () {
   background.add(new Background(100, 290, 1, 0, 5, color(255)));
   background.add(new Background(100, 300, 1, 0, 5, color(255)));
   background.add(new Background(100, 310, 1, 0, 5, color(255)));
-  
-  
+
+
   //snowman 2
   background.add(new Background(600, 260, 40, 0, 5, color(255)));
   background.add(new Background(600, 300, 40, 0, 5, color(255)));
@@ -111,13 +111,17 @@ void setup () {
   background.add(new Background(600, 290, 1, 0, 5, color(255)));
   background.add(new Background(600, 300, 1, 0, 5, color(255)));
   background.add(new Background(600, 310, 1, 0, 5, color(255)));
-  
+
   //make the player
-   player.add(new Player(205, 225, 30, 0, 2, color(255)));
-  
-  
-  
-  
+  player.add(new Player(205, 255, 30, 0, 2, color(255)));
+  player.add(new Player(200, 270, 10, 10, 1, color(255)));
+  player.add(new Player(190, 280, 30, 50, 1, color(255)));
+  player.add(new Player(190, 280, 30, 50, 1, color(255)));
+  player.add(new Player(170, 290, 20, 10, 1, color(255)));
+  player.add(new Player(220, 290, 20, 10, 1, color(255)));
+  player.add(new Player(190, 330, 20, 40, 1, color(255)));
+  player.add(new Player(150, 350, 40, 20, 1, color(255)));
+  player.add(new Player(210, 330, 60, 20, 1, color(255)));
   //snow animation
   for (int i = 0; i < snow.length; i++) {
     snow[i] = new Snow(4);
@@ -125,24 +129,40 @@ void setup () {
 }
 
 void draw() {
-  background (0, 100, 255);
+  background (169, 169, 169);
   for (int i = 0; i < ground.size(); i++) {
     Ground g = ground.get(i);
     g.groundDisplay();
   }
-  
+
   //call the user-defined method "display()" to set the trees
   for (int i = 0; i < background.size(); i++) {
     Background b = background.get(i);
     b.display();
-    //b.stuffMove();
+    b.stuffMove();
     b.continueObject();
   }
+
+  for (int i = 0; i < player.size(); i++) {
+    Player p = player.get(i);
+    p.display();
+    p.update();
+    p.stay();
+    p.jump();
+  }
+
   //call the user-defined method to enable the snowfall
   for (int i = 0; i < snow.length; i++) {
     snow[i].display();
     snow[i].snowFall();
     snow[i].fall();
   }
-
 }
+
+void keyPressed() {
+  if (keyCode == UP){
+  for (Player p : player) {
+   p.jump(); 
+  }
+  }
+ }

@@ -1,9 +1,10 @@
 class Player {
-  PVector objectLocation;
+  boolean onGround = true;
   PVector position;
   PVector velocity;
   PVector acceleration;
-ArrayList<PVector> gotHit;
+  float fall = 0.02;
+  ArrayList<PVector> gotHit;
   float x, y, l, w, t;
   color c;
   //call the constructor method and gather data
@@ -14,28 +15,50 @@ ArrayList<PVector> gotHit;
     l = temp4;
     t = temp5;
     c = temp6;
-    objectLocation = new PVector(x, y);
     position = new PVector(x, y);
-    velocity = new PVector(3,0);
-    acceleration = new PVector(0,0.3);
+    velocity = new PVector(0, 1);
+    acceleration = new PVector(0, 0.3);
     gotHit = new ArrayList<PVector>();
   }
-  
+
   void update() {
-   velocity.add(acceleration);
-   position.add(velocity);
+    velocity.add(acceleration);
+    position.add(velocity);
+    position.y += velocity.y;
+    velocity.y += acceleration.y;
   }
-  
-   void display () {
+
+  void display () {
     if (t == 1) {
       stroke(1);
       fill(c);
-      rect(objectLocation.x, objectLocation.y, w, l);
+      rect(position.x, position.y, w, l);
     }
     //make a smaller triangle with stroke
     if (t == 2) {
       stroke(1);
       fill(c);
-      ellipse(objectLocation.x, objectLocation.y, w, w);
+      ellipse(position.x, position.y, w, w);
     }
-}}
+  }
+
+  void stay() {
+    if (onGround) {
+      velocity.y = 0;
+      acceleration.y = 0;
+    } else {
+      acceleration.y = fall;
+    }
+  }
+  void jump() {
+    if (keyCode == UP) {
+      if (onGround == true) {
+       velocity.y = -5;
+       onGround = false;
+      }  
+    }
+    else {
+      
+    }
+  }
+}
