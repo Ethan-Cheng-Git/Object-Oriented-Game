@@ -135,7 +135,7 @@ void draw() {
   for (int i = 0; i < background.size(); i++) {
     Background b = background.get(i);
     b.display();
-    b.stuffMove();
+    //b.stuffMove();
     b.continueObject();
   }
   //call the user-defined method to enable the snowfall
