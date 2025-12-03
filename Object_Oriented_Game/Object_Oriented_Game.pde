@@ -1,5 +1,4 @@
 ArrayList<Player> player;
-ArrayList<Snowman> snowman;
 ArrayList<Background> background;
 ArrayList<Ground> ground;
 Snow [] snow = new Snow [60];
@@ -8,7 +7,6 @@ void setup () {
   size(800, 500);
   background(0, 100, 255);
   player = new ArrayList<Player>();
-  snowman = new ArrayList<Snowman>();
   background = new ArrayList<Background>();
   ground = new ArrayList <Ground>();
 
@@ -114,6 +112,8 @@ void setup () {
   background.add(new Background(600, 300, 1, 0, 5, color(255)));
   background.add(new Background(600, 310, 1, 0, 5, color(255)));
   
+  //make the player
+   player.add(new Player(205, 225, 30, 0, 2, color(255)));
   
   
   
@@ -144,4 +144,5 @@ void draw() {
     snow[i].snowFall();
     snow[i].fall();
   }
+
 }
