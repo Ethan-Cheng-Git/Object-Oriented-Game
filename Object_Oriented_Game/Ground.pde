@@ -1,6 +1,7 @@
 class Ground {
 
-  float x, y, w, l, t, c;
+  float x, y, w, l;
+  color c;
 
   Ground (float temp1, float temp2, float temp3, float temp4, color temp5) {
     x = temp1;
@@ -10,7 +11,7 @@ class Ground {
     c = temp5;
   }
   
-  void skyDisplay() {
+  void groundDisplay() {
     noStroke();
     fill(c);
     rect(x, y, w, l);

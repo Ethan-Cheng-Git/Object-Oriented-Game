@@ -18,12 +18,16 @@ class Snow {
   void display() {
     stroke(0); 
     fill (255);
+    x--;
     ellipse(x,y,diameter,diameter);
   }
   
  void fall() {
    if (y > height) {
      y = 0; 
+   }
+   else if (x < 0) {
+    x = width; 
    }
  }
   

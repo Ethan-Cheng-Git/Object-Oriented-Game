@@ -58,4 +58,10 @@ class Background {
     objectLocation.x = objectLocation.x - 1;
 
   }
+  
+  void continueObject () {
+    if (objectLocation.x < 0) {
+     objectLocation.x = width; 
+   }
+  }
 }

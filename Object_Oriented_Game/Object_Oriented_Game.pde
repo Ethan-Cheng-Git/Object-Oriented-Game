@@ -13,7 +13,7 @@ void setup () {
   ground = new ArrayList <Ground>();
 
   // sky?
-  background.add(new Background(0, 180, width, height, 3, color(255)));
+  ground.add(new Ground(0, 180, width, height, color(255)));
 
   //Add the trees
   //wood
@@ -126,12 +126,17 @@ void setup () {
 
 void draw() {
   background (0, 100, 255);
-  skyDisplay();
+  for (int i = 0; i < ground.size(); i++) {
+    Ground g = ground.get(i);
+    g.groundDisplay();
+  }
+  
   //call the user-defined method "display()" to set the trees
   for (int i = 0; i < background.size(); i++) {
     Background b = background.get(i);
     b.display();
-    //b.stuffMove();
+    b.stuffMove();
+    b.continueObject();
   }
   //call the user-defined method to enable the snowfall
   for (int i = 0; i < snow.length; i++) {
