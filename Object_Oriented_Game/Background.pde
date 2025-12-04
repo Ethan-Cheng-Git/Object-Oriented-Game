@@ -57,7 +57,6 @@ class Background {
   }
 
   void stuffMove() {
-
     objectLocation.x -= speedGlobal;
   }
 

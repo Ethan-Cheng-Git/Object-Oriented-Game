@@ -4,6 +4,7 @@ ArrayList<Ground> ground;
 boolean gameOn = true;
 Snow [] snow = new Snow [60];
 float speedGlobal = 1.5;
+int score = 0;
 
 
 void setup () {
@@ -127,6 +128,7 @@ void setup () {
 
 void draw() {
   background (169, 169, 169);
+
   for (int i = 0; i < ground.size(); i++) {
     Ground g = ground.get(i);
     g.groundDisplay();
@@ -155,29 +157,34 @@ void draw() {
     snow[i].snowFall();
     snow[i].fall();
   }
-  // if the game ends, show game over screen 
+  // if the game ends, show game over screen
   if (gameOn) {
     speedGlobal += 0.0006;
-  }
-  else if (!gameOn) {
-   fill(0);
-   rect(0, 0, width, height);
-   fill(255);
-   textAlign(CENTER, CENTER);
-   textSize(32);
-   text("YOU LOST, PRESS X TO PLAY AGAIN", width/2, height/2);   
+    score = frameCount;
+
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(32);
+    text("SCORE: " + score, 100, 20);
+  } else if (!gameOn) {
+    fill(0);
+    rect(0, 0, width, height);
+    fill(255, 0, 0);
+    textAlign(CENTER, CENTER);
+    textSize(32);
+    text("YOU LOST, YOUR SCORE IS " + score + "! PRESS X TO PLAY AGAIN!", width/2, height/2);
   }
 }
 
 void keyPressed() {
-  if (keyCode == UP) {
+  if (keyCode == ' ') {
     for (Player p : player) {
       p.jump();
     }
   }
   if (gameOn == false && (key == 'X' || key == 'x')) {
-    
-    gameOn = true; 
+    gameOn = true;
+    frameCount = 0;
     setup();
   }
 }
@@ -196,7 +203,6 @@ void collision(Player p, ArrayList<Background> obstacle) {
       if (distanceSquared < radiusSquared) {
         gameOn = false;
         speedGlobal = 1.5;
-        println("YOU LOSE");
       }
     }
   }
