@@ -3,10 +3,11 @@ ArrayList<Background> background;
 ArrayList<Ground> ground;
 boolean gameOn = true;
 Snow [] snow = new Snow [60];
+float speedGlobal = 1.5;
 
 
 void setup () {
-  size(800, 500);
+  size(1200, 500);
   background(0, 100, 255);
   player = new ArrayList<Player>();
   background = new ArrayList<Background>();
@@ -155,7 +156,10 @@ void draw() {
     snow[i].fall();
   }
   // if the game ends, show game over screen 
-  if (!gameOn) {
+  if (gameOn) {
+    speedGlobal += 0.0006;
+  }
+  else if (!gameOn) {
    fill(0);
    rect(0, 0, width, height);
    fill(255);
@@ -191,6 +195,7 @@ void collision(Player p, ArrayList<Background> obstacle) {
 
       if (distanceSquared < radiusSquared) {
         gameOn = false;
+        speedGlobal = 1.5;
         println("YOU LOSE");
       }
     }

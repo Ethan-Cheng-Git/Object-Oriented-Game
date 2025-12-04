@@ -3,6 +3,7 @@ class Background {
   PVector objectLocation;
   float x, y, l, w, t;
   color c;
+  float speedUp;
   //call the constructor method and gather data
   Background (float temp1, float temp2, float temp3, float temp4, float temp5, color temp6) {
     x = temp1;
@@ -12,6 +13,7 @@ class Background {
     t = temp5;
     c = temp6;
     objectLocation = new PVector(x, y);
+    speedUp = 1.5 + (frameCount / 1300);
   }
   //make rectangle with no stroke
   void display () {
@@ -55,13 +57,13 @@ class Background {
   }
 
   void stuffMove() {
-    objectLocation.x = objectLocation.x - 1.5;
 
+    objectLocation.x -= speedGlobal;
   }
-  
+
   void continueObject () {
     if (objectLocation.x <= -70) {
-     objectLocation.x = width + 100; 
-   }
+      objectLocation.x = width + 100;
+    }
   }
 }

@@ -1,36 +1,32 @@
 class Snow {
-  
-  float x; 
+
+  float x;
   float y;
   float diameter;
-  
+
   Snow(float tempD) {
     x = random(width);
     y = random(height);
-    diameter = tempD;   
+    diameter = tempD;
   }
-  
+
   void snowFall() {
-    y = (y + random(1,4) / 2);
-    x = x + random(-2,2);
+    y = (y + random(1, 4) / 2);
+    x = x + random(-2, 2);
   }
-  
+
   void display() {
-    stroke(0); 
+    stroke(0);
     fill (255);
-    x = x - 2;
-    ellipse(x,y,diameter,diameter);
+    x = x - 4;
+    ellipse(x, y, diameter, diameter);
   }
-  
- void fall() {
-   if (y > height) {
-     y = 0; 
-   }
-   else if (x < 0) {
-    x = width; 
-   }
- }
-  
-  
-  
+
+  void fall() {
+    if (y > height) {
+      y = 0;
+    } else if (x < 0) {
+      x = width;
+    }
+  }
 }
