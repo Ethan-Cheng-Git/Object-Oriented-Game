@@ -21,7 +21,7 @@ class Player {
     velocity = new PVector(0, 1);
     acceleration = new PVector(0, 0.9);
     gotHit = new ArrayList<PVector>();
-    onGround = true;
+    onGround = false;
   }
 
   void update() {
@@ -46,13 +46,13 @@ class Player {
       ellipse(position.x, position.y, w, w);
     }
   }
-  
   void stay() {
     if (!onGround) {
       acceleration.y = fall;
- 
+      onGround = false;
     } else {
       acceleration.y = 0;
+      onGround = true;
     } 
      if (position.y >= 370) {
       position.y = 390 - 100;
@@ -60,15 +60,15 @@ class Player {
     }
   }
 
-  void jump() {
-    if (keyCode == UP) {
+  void jump() {   
       if (onGround == true) {
        velocity.y = jumpP;
-       onGround = false;
-      }  
+       onGround = false;      
     } else {
            onGround = false; 
     }
   
   }
+  
+  
 }

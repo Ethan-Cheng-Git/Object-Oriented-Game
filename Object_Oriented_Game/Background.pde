@@ -46,7 +46,7 @@ class Background {
       fill(c);
       ellipse(objectLocation.x, objectLocation.y, w, w);
     }
-    //make lines
+    //make smaller triangle
     if (t == 6) {
       stroke(1);
       fill(c);

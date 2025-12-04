@@ -1,6 +1,7 @@
 ArrayList<Player> player;
 ArrayList<Background> background;
 ArrayList<Ground> ground;
+boolean gameOn = true;
 Snow [] snow = new Snow [60];
 
 
@@ -10,7 +11,7 @@ void setup () {
   player = new ArrayList<Player>();
   background = new ArrayList<Background>();
   ground = new ArrayList <Ground>();
- 
+
 
   // sky?
   ground.add(new Ground(0, 180, width, height, color(245)));
@@ -76,6 +77,7 @@ void setup () {
 
 
   //snowman
+  //body
   background.add(new Background(100, 260, 40, 0, 5, color(255)));
   background.add(new Background(100, 300, 40, 0, 5, color(255)));
   background.add(new Background(100, 340, 40, 0, 5, color(255)));
@@ -115,7 +117,7 @@ void setup () {
   background.add(new Background(600, 310, 1, 0, 5, color(255)));
 
   //make the player
-  player.add(new Player(205, 255, 30, 0, 1, color(255)));
+  player.add(new Player(205, 340, 30, 0, 1, color(255)));
   //snow animation
   for (int i = 0; i < snow.length; i++) {
     snow[i] = new Snow(4);
@@ -142,8 +144,8 @@ void draw() {
     p.display();
     p.update();
     p.stay();
-    p.jump();
     p.display();
+    collision(p, background);
   }
 
   //call the user-defined method to enable the snowfall
@@ -151,5 +153,46 @@ void draw() {
     snow[i].display();
     snow[i].snowFall();
     snow[i].fall();
+  }
+  // if the game ends, show game over screen 
+  if (!gameOn) {
+   fill(0);
+   rect(0, 0, width, height);
+   fill(255);
+   textAlign(CENTER, CENTER);
+   textSize(32);
+   text("YOU LOST, PRESS X TO PLAY AGAIN", width/2, height/2);   
+  }
+}
+
+void keyPressed() {
+  if (keyCode == UP) {
+    for (Player p : player) {
+      p.jump();
+    }
+  }
+  if (gameOn == false && (key == 'X' || key == 'x')) {
+    
+    gameOn = true; 
+    setup();
+  }
+}
+
+void collision(Player p, ArrayList<Background> obstacle) {
+  for (Background b : obstacle) {
+    if (b.t == 5) {
+      float distanceX = p.position.x - b.objectLocation.x;
+      float distanceY = p.position.y - b.objectLocation.y;
+
+      float distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+      float radiusSum = (p.w/2 + b.w/2);
+      float radiusSquared = radiusSum * radiusSum;
+
+      if (distanceSquared < radiusSquared) {
+        gameOn = false;
+        println("YOU LOSE");
+      }
+    }
   }
 }

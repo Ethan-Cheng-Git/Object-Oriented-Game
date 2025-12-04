@@ -18,7 +18,7 @@ class Snow {
   void display() {
     stroke(0); 
     fill (255);
-    x--;
+    x = x - 2;
     ellipse(x,y,diameter,diameter);
   }
   
