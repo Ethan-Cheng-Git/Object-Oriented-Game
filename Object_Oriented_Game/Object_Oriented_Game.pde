@@ -1,3 +1,4 @@
+//create the arrays and classes, set the speed and score as global variables
 ArrayList<Player> player;
 ArrayList<Background> background;
 ArrayList<Ground> ground;
@@ -6,7 +7,7 @@ Snow [] snow = new Snow [60];
 float speedGlobal = 1.5;
 int score = 0;
 
-
+// set up the objects
 void setup () {
   size(1200, 500);
   background(0, 100, 255);
@@ -14,9 +15,8 @@ void setup () {
   background = new ArrayList<Background>();
   ground = new ArrayList <Ground>();
 
-
-  // sky?
-  ground.add(new Ground(0, 180, width, height, color(245)));
+  // ground
+  ground.add(new Ground(0, 180, width, height, color(235)));
 
   //Add the trees
   //wood
@@ -100,6 +100,7 @@ void setup () {
 
 
   //snowman 2
+  //body
   background.add(new Background(600, 260, 40, 0, 5, color(255)));
   background.add(new Background(600, 300, 40, 0, 5, color(255)));
   background.add(new Background(600, 340, 40, 0, 5, color(255)));
@@ -119,13 +120,15 @@ void setup () {
   background.add(new Background(600, 310, 1, 0, 5, color(255)));
 
   //make the player
-  player.add(new Player(205, 340, 30, 0, 1, color(255)));
+  player.add(new Player(205, 340, 30, 0, 1, color(255, 0, 0)));
+  
   //snow animation
   for (int i = 0; i < snow.length; i++) {
     snow[i] = new Snow(4);
   }
 }
 
+// call the user defined methods into draw()
 void draw() {
   background (169, 169, 169);
 
@@ -141,7 +144,7 @@ void draw() {
     b.stuffMove();
     b.continueObject();
   }
-
+  // call the user-defined method to set the player and collision check
   for (int i = 0; i < player.size(); i++) {
     Player p = player.get(i);
     p.display();
@@ -157,15 +160,16 @@ void draw() {
     snow[i].snowFall();
     snow[i].fall();
   }
-  // if the game ends, show game over screen
+  //speed gloal variable and score keeps going as the game goes on, hence the "gameOn" boolean
   if (gameOn) {
+    //displays the score
     speedGlobal += 0.0006;
     score = frameCount;
-
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(32);
     text("SCORE: " + score, 100, 20);
+    //shows game over screen and final score if player losses
   } else if (!gameOn) {
     fill(0);
     rect(0, 0, width, height);
@@ -175,23 +179,25 @@ void draw() {
     text("YOU LOST, YOUR SCORE IS " + score + "! PRESS X TO PLAY AGAIN!", width/2, height/2);
   }
 }
-
+//The player jumps when the space key is pressed, calling the "jump()" function from the Player class
 void keyPressed() {
   if (keyCode == ' ') {
     for (Player p : player) {
       p.jump();
     }
   }
+  //Game resets if player presses "x" key and the score and speed restarts to normal and recalls the setup() which restarts everything
   if (gameOn == false && (key == 'X' || key == 'x')) {
     gameOn = true;
     frameCount = 0;
     setup();
   }
 }
-
+//A collision checker, if the player is within the snowman, it detects the hit
 void collision(Player p, ArrayList<Background> obstacle) {
   for (Background b : obstacle) {
     if (b.t == 5) {
+      // set up the distances checker and the blueprints for identifying the position of the player and the object
       float distanceX = p.position.x - b.objectLocation.x;
       float distanceY = p.position.y - b.objectLocation.y;
 
@@ -199,7 +205,7 @@ void collision(Player p, ArrayList<Background> obstacle) {
 
       float radiusSum = (p.w/2 + b.w/2);
       float radiusSquared = radiusSum * radiusSum;
-
+      //if the distance is less than the radius of inside the snowman object, the game ends, hence the "false" set boolean and global variable speed is set back to normal
       if (distanceSquared < radiusSquared) {
         gameOn = false;
         speedGlobal = 1.5;

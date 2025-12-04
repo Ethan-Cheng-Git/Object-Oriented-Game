@@ -55,11 +55,11 @@ class Background {
       triangle(objectLocation.x, objectLocation.y, objectLocation.x + 10, objectLocation.y - 5, objectLocation.x + 10, objectLocation.y + 5);
     }
   }
-
+  //Using the global speed variable, the objects move to the left
   void stuffMove() {
     objectLocation.x -= speedGlobal;
   }
-
+  //Re-draws the objects if they go off screen
   void continueObject () {
     if (objectLocation.x <= -70) {
       objectLocation.x = width + 100;
