@@ -1,9 +1,11 @@
 class Player {
-  boolean onGround = true;
+  boolean onGround;
   PVector position;
   PVector velocity;
   PVector acceleration;
   float fall = 0.02;
+  float groundY = 350;
+  float jumpP = -3;
   ArrayList<PVector> gotHit;
   float x, y, l, w, t;
   color c;
@@ -17,48 +19,56 @@ class Player {
     c = temp6;
     position = new PVector(x, y);
     velocity = new PVector(0, 1);
-    acceleration = new PVector(0, 0.3);
+    acceleration = new PVector(0, 0.9);
     gotHit = new ArrayList<PVector>();
+    onGround = true;
   }
 
   void update() {
     velocity.add(acceleration);
     position.add(velocity);
-    position.y += velocity.y;
-    velocity.y += acceleration.y;
+    
+
+  if (position.y >= groundY) {
+   position.y = groundY;
+   velocity.y = 0;
+   onGround = true;
+  }
+  
   }
 
+
   void display () {
+    //make a smaller circle with stroke
     if (t == 1) {
-      stroke(1);
-      fill(c);
-      rect(position.x, position.y, w, l);
-    }
-    //make a smaller triangle with stroke
-    if (t == 2) {
       stroke(1);
       fill(c);
       ellipse(position.x, position.y, w, w);
     }
   }
-
+  
   void stay() {
-    if (onGround) {
-      velocity.y = 0;
-      acceleration.y = 0;
-    } else {
+    if (!onGround) {
       acceleration.y = fall;
+ 
+    } else {
+      acceleration.y = 0;
+    } 
+     if (position.y >= 370) {
+      position.y = 390 - 100;
+      onGround = true;
     }
   }
+
   void jump() {
     if (keyCode == UP) {
       if (onGround == true) {
-       velocity.y = -5;
+       velocity.y = jumpP;
        onGround = false;
       }  
+    } else {
+           onGround = false; 
     }
-    else {
-      
-    }
+  
   }
 }

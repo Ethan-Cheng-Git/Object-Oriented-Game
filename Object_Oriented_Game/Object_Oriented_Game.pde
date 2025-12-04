@@ -3,12 +3,14 @@ ArrayList<Background> background;
 ArrayList<Ground> ground;
 Snow [] snow = new Snow [60];
 
+
 void setup () {
   size(800, 500);
   background(0, 100, 255);
   player = new ArrayList<Player>();
   background = new ArrayList<Background>();
   ground = new ArrayList <Ground>();
+ 
 
   // sky?
   ground.add(new Ground(0, 180, width, height, color(245)));
@@ -113,15 +115,7 @@ void setup () {
   background.add(new Background(600, 310, 1, 0, 5, color(255)));
 
   //make the player
-  player.add(new Player(205, 255, 30, 0, 2, color(255)));
-  player.add(new Player(200, 270, 10, 10, 1, color(255)));
-  player.add(new Player(190, 280, 30, 50, 1, color(255)));
-  player.add(new Player(190, 280, 30, 50, 1, color(255)));
-  player.add(new Player(170, 290, 20, 10, 1, color(255)));
-  player.add(new Player(220, 290, 20, 10, 1, color(255)));
-  player.add(new Player(190, 330, 20, 40, 1, color(255)));
-  player.add(new Player(150, 350, 40, 20, 1, color(255)));
-  player.add(new Player(210, 330, 60, 20, 1, color(255)));
+  player.add(new Player(205, 255, 30, 0, 1, color(255)));
   //snow animation
   for (int i = 0; i < snow.length; i++) {
     snow[i] = new Snow(4);
@@ -149,6 +143,7 @@ void draw() {
     p.update();
     p.stay();
     p.jump();
+    p.display();
   }
 
   //call the user-defined method to enable the snowfall
@@ -158,11 +153,3 @@ void draw() {
     snow[i].fall();
   }
 }
-
-void keyPressed() {
-  if (keyCode == UP){
-  for (Player p : player) {
-   p.jump(); 
-  }
-  }
- }

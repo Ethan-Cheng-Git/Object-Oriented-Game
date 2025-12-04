@@ -55,13 +55,13 @@ class Background {
   }
 
   void stuffMove() {
-    objectLocation.x = objectLocation.x - 2;
+    objectLocation.x = objectLocation.x - 1.5;
 
   }
   
   void continueObject () {
     if (objectLocation.x <= -70) {
-     objectLocation.x = width + 50; 
+     objectLocation.x = width + 100; 
    }
   }
 }
