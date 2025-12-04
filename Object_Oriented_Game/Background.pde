@@ -62,7 +62,7 @@ class Background {
   //Re-draws the objects if they go off screen
   void continueObject () {
     if (objectLocation.x <= -70) {
-      objectLocation.x = width + 100;
+      objectLocation.x = width + 300;
     }
   }
 }
